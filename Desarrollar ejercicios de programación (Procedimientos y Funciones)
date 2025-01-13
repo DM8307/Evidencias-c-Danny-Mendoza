@@ -1,0 +1,133 @@
+//Desarrollar ejercicios de programación (Procedimientos y Funciones)
+
+
+using System;
+
+namespace metodos_clases
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            while (true)
+            {
+                MostrarMenu();
+                int seleccion = Convert.ToInt32(Console.ReadLine());
+                
+                switch (seleccion)
+                {
+                    case 1:
+                        CalcularAreaCuadrado();
+                        break;
+                    case 2:
+                        CalcularAreaRectangulo();
+                        break;
+                    case 3:
+                        CalcularAreaTriangulo();
+                        break;
+                    case 4:
+                        CalcularAreaCirculo();
+                        break;
+                    case 5:
+                        CalcularAreaCono();
+                        break;
+                    case 6:
+                        CalcularHipotenusa();
+                        break;
+                    case 7:
+                        Console.WriteLine("Saliendo del programa. ¡Hasta luego!");
+                        return;
+                    default:
+                    Console.WriteLine("Selección inválida. Intente de nuevo.");
+                        break;
+                }
+
+                    if (!PreguntarSiRepetir())
+                {
+                    Console.WriteLine("Saliendo del programa. ¡Hasta luego!");
+                    break;
+                }
+
+            }
+        }
+
+        static void MostrarMenu()
+        {
+            Console.WriteLine(@"
+| Digite un número para elegir un programa |
+1. Área del cuadrado
+2. Área del rectángulo
+3. Área del triángulo
+4. Área del círculo
+5. Área del cono
+6. La hipotenusa utilizando el teorema de Pitágoras
+7. Salir
+");
+        }
+
+        static bool PreguntarSiRepetir()
+        {
+            Console.WriteLine("¿Quiere volver a la selección? Escriba 'si' o 'no':");
+            string respuesta = Console.ReadLine();
+            return string.Equals(respuesta, "si", StringComparison.OrdinalIgnoreCase);
+        }
+
+        static void CalcularAreaCuadrado()
+        {
+            Console.WriteLine("Ingrese la longitud del lado del cuadrado:");
+            double lado = Convert.ToDouble(Console.ReadLine());
+            double area = lado * lado;
+            Console.WriteLine($"El área del cuadrado es: {area}");
+        }
+
+        static void CalcularAreaRectangulo()
+        {
+            Console.WriteLine("Ingrese la base del rectángulo:");
+            double baseRect = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Ingrese la altura del rectángulo:");
+            double altura = Convert.ToDouble(Console.ReadLine());
+            double area = baseRect * altura;
+            Console.WriteLine($"El área del rectángulo es: {area}");
+        }
+
+        static void CalcularAreaTriangulo()
+        {
+            Console.WriteLine("Ingrese la base del triángulo:");
+            double baseTri = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Ingrese la altura del triángulo:");
+            double altura = Convert.ToDouble(Console.ReadLine());
+            double area = (baseTri * altura) / 2;
+            Console.WriteLine($"El área del triángulo es: {area}");
+        }
+
+        static void CalcularAreaCirculo()
+        {
+            Console.WriteLine("Ingrese el radio del círculo:");
+            double radio = Convert.ToDouble(Console.ReadLine());
+            double area = Math.PI * radio * radio;
+            Console.WriteLine($"El área del círculo es: {area}");
+        }
+
+        static void CalcularAreaCono()
+        {
+            Console.WriteLine("Ingrese el radio de la base del cono:");
+            double radio = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Ingrese la altura del cono:");
+            double altura = Convert.ToDouble(Console.ReadLine());
+            double area = Math.PI * radio * (radio + Math.Sqrt((radio * radio) + (altura * altura)));
+            Console.WriteLine($"El área del cono es: {area}");
+        }
+
+        static void CalcularHipotenusa()
+        {
+            Console.WriteLine("Ingrese el valor del primer cateto:");
+            double cateto1 = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Ingrese el valor del segundo cateto:");
+            double cateto2 = Convert.ToDouble(Console.ReadLine());
+            double hipotenusa = Math.Sqrt((cateto1 * cateto1) + (cateto2 * cateto2));
+            Console.WriteLine($"La hipotenusa es: {hipotenusa}");
+        }
+    
+    }
+}
+
